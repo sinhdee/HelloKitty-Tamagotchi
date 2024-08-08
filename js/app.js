@@ -1,19 +1,22 @@
 /*-------------------------------- Constants --------------------------------*/
-boredomStatEl
+const boredomStatEl =document.getElementById('boredom-stat')
 
-hungerStatEl
+const hungerStatEl = document.getElementById('hunger-stat');
 
-sleepinessStatEl
+const sleepinessStatEl = document.getElementById("sleepiness-stat");
 
-playBtnEl
+const playBtnEl = document.getElementById('play');
 
-feedBtnEl
+const feedBtnEl = document.getElementById('feed');
 
-sleepBtnEl
+const sleepBtnEl = document.getElementById('sleep');
 
-gameMessageEL
+const gameMessageEL = document.getElementById('message');
 
-resetBtnEl
+const resetBtnEl = document.getElementById('restart');
+
+console.log(boredomStatEl); 
+
 
 /*---------------------------- Variables (state) ----------------------------*/
 let state = {
@@ -25,22 +28,8 @@ let state = {
 let timer 
 
 let gameOver = false 
+
 /*------------------------ Cached Element References ------------------------*/
-const boredomStatEl = document.getElementById('bordeom-stat');
-
-const hungerStatEl = document.getElementById('hunger-stat');
-
-const sleepinessStatEl = document.getElementById('sleepiness-stat');
-
-const playBtnEl = document.querySelector('play');
-
-const feedBtnEl = document.querySelector('feed');
-
-const sleepBtnEl = document.querySelector('sleep');
-
-const gameMessageEL = document.querySelector('game-status');
-
-const resetBtnEl = document.querySelector('play again');
 
 
 
@@ -48,65 +37,69 @@ const resetBtnEl = document.querySelector('play again');
 
 /*-------------------------------- Functions --------------------------------*/
 function init () {
-timer = setInterval()
+    
+resetBtnEl.classList.add('hidden');
+gameMessageEL.classList.add('hidden');
+
+state.boredom = 0 
+state.hunger = 0 
+state.sleepiness = 0 
+
+gameOver = false
+
+timer = setInterval(runGame,2000);
 }
 
-init();
-setInterval(runGame,2000)
-
 function runGame () {
-updateStates()
-checkGameOver()
-render(
-    boredomStatEl.textContent = 'Boredom: ${states.boredom}',
-    hungerStatEl.textContent = 'Hunger: ${state.hunger}',
-    sleepBtnEl.textContent= 'Sleepiness: $ {state.sleepiness}'
-)
-
+        updateStates()
+        checkGameOver()
+        render(); 
+        console.log('running')
 }
 
 function render () {
-if (checkGameOver = true){
-timer.clearInterval()
-} if (state.gameOver) {
-    resetBtnEl.classList.remove('hidden')
-    gameMessageEL.classList.remove('hidden')
-}
-}
+    boredomStatEl.textContent = ` ${state.boredom}`;
+    hungerStatEl.textContent = ` ${state.hunger}`;
+    sleepinessStatEl.textContent = `${state.sleepiness}`;
 
-
-function randomNumber (min, max) {
-let min = 0 
-let max = 3
-return Math.random() * (min - max) + min;
+ if (gameOver) {
+    clearInterval(timer);
+    resetBtnEl.classList.remove('hidden');
+    gameMessageEL.classList.remove('hidden');
+ }
 }
 
-function updateStates(state) {
-state.forEach(states => { states += randomNumber();
-    
-});   
+
+
+function randomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-render();
+function updateStates() {
+state.boredom += randomNumber(1,3);
+state.hunger += randomNumber(1,3);
+state.sleepiness += randomNumber (1,3); 
+console.log(state)
+}
 
-function checkGameOver () {
-    if (state() >= 0) {
-        return gameOver = true 
+function checkGameOver() {
+    if (state.boredom >= 10 || state.hunger >= 10 || state.sleepiness >= 10) {
+         gameOver = true; 
     }
 }
 
 function playBtnClick () {
-    state.boredom = 0 
+    state.boredom = Math.max(0,state.boredom - 10);
     render()
 }
 
 function feedBtnClick () {
-    state.hunger = 0
+    state.hunger = Math.max(0, state.hunger - 10 )
     render()
 }
 
 function sleepBtnClick () {
-    state.sleepiness = 0 
+    state.sleepiness = Math.max(0, state.sleepiness -10);
     render()
 }
 /*----------------------------- Event Listeners -----------------------------*/
@@ -114,7 +107,8 @@ function sleepBtnClick () {
 playBtnEl.addEventListener("click",playBtnClick)
 feedBtnEl.addEventListener('click',feedBtnClick)
 sleepBtnEl.addEventListener('click',sleepBtnClick)
-
+resetBtnEl.addEventListener('click',init)
+init();
 
 
 
