@@ -15,7 +15,7 @@ const gameMessageEL = document.getElementById('message');
 
 const resetBtnEl = document.getElementById('restart');
 
-console.log(boredomStatEl); 
+const showInstructionsBtnEl = document.getElementById('showinstructionsBtn')
 
 
 /*---------------------------- Variables (state) ----------------------------*/
@@ -29,6 +29,7 @@ let timer
 
 let gameOver = false 
 
+let showInstructionsBtn = 'none'
 /*------------------------ Cached Element References ------------------------*/
 
 
@@ -109,7 +110,6 @@ feedBtnEl.addEventListener('click',feedBtnClick)
 sleepBtnEl.addEventListener('click',sleepBtnClick)
 resetBtnEl.addEventListener('click',init)
 init();
-
 
 //create a widget for the game 
 //add sound unit one level up (audio)

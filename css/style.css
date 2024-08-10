@@ -70,7 +70,7 @@
     background-color: #918bee;
   }
   
-  /* images */
+
   .game-graphic {
     max-height: 33vmin;
     margin-bottom: 32px;
@@ -79,5 +79,20 @@
   .hidden {
     visibility: hidden;
   }
+
+#instructions {
+  display: flex;
+  padding: 10px;
+  border: 1px solid;
+  background-color: #d85fa6;
+  text-align: center;
+  flex-direction: column;
+}
+
+#showInstructions {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  padding-top: 20px;
   
-  
+}
