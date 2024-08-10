@@ -111,6 +111,11 @@ resetBtnEl.addEventListener('click',init)
 init();
 
 
-
+//create a widget for the game 
+//add sound unit one level up (audio)
+// add different emojis for each one 
+// move the hello kitty up to the middle of the screen using flexbox 
+// create a popout with instructions with how to play
+// 
 
 
