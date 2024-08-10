@@ -1,4 +1,4 @@
-/* global styles  */
+
 * {
     box-sizing: border-box;
   }
@@ -10,7 +10,7 @@
     font-family: system-ui, sans-serif;
   }
   
-  /* element styles */
+  
   h1 {
     font-size: 3.5rem;
   }
@@ -19,12 +19,12 @@
     font-size: 1.7rem;
   }
   
-  /* headings */
+
   header {
     text-align: center;
   }
   
-  /* layout */
+ 
   main {
     max-width: 90vw;
     margin: 0 auto;
@@ -48,7 +48,6 @@
     flex-direction: column;
   }
   
-  /* button styling*/
   button {
     padding: 1.5rem;
     line-height: 1em;
