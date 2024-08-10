@@ -8,7 +8,9 @@
  Tamagotchi is a hand held nostalgic game that was created in 1997! I chose to do this game for pure nostalgic memories that also challenge my coding skills! The game consist of keeping your cute little character as happy as possible! You can do this by playing, feeding, and letting your little friend go to sleep! 
 
 
-## Getting Started
+## Getting Started 
+
+https://sinhdee.github.io/HelloKitty-Tamagotchi/
 
 ## Technologies used
 1. Javascript
